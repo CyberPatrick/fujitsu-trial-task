@@ -233,18 +233,6 @@ Each weather record is saved in a separate transaction:
 
 ---
 
-## Configuration
-
-Example properties:
-
-spring.datasource.url=jdbc:h2:file:./data/db
-spring.jpa.hibernate.ddl-auto=update
-spring.h2.console.enabled=true
-
-weather.import.cron=0 15 * * * *
-weather.api.url=https://www.ilmateenistus.ee/ilma_andmed/xml/observations.php
-
-
 ## Possible Improvements
 
 * Add CRUD for fee rules
