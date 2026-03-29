@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="0" author="Nikita">
+        <createTable tableName="weather_extra_fee_transport">
+            <column name="weather_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_weather_extra_fee_id"
+                             referencedTableName="weather_extra_fee" referencedColumnNames="id" deleteCascade="true"/>
+            </column>
+            <column name="transport_id" type="int">
+                <constraints nullable="false" foreignKeyName="fk_weather_extra_fee_transport__transport_id"
+                             referencedTableName="transport" referencedColumnNames="id" deleteCascade="true"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="weather_extra_fee_transport" columnNames="weather_id, transport_id"/>
+
+        <insert tableName="weather_extra_fee_transport">
+            <column name="weather_id" value="0"/>
+            <column name="transport_id" value="0"/>
+        </insert>
+        <insert tableName="weather_extra_fee_transport">
+            <column name="weather_id" value="1"/>
+            <column name="transport_id" value="0"/>
+        </insert>
+        <insert tableName="weather_extra_fee_transport">
+            <column name="weather_id" value="2"/>
+            <column name="transport_id" value="0"/>
+        </insert>
+
+
+        <insert tableName="weather_extra_fee_transport">
+            <column name="weather_id" value="0"/>
+            <column name="transport_id" value="1"/>
+        </insert>
+        <insert tableName="weather_extra_fee_transport">
+            <column name="weather_id" value="1"/>
+            <column name="transport_id" value="1"/>
+        </insert>
+        <insert tableName="weather_extra_fee_transport">
+            <column name="weather_id" value="2"/>
+            <column name="transport_id" value="1"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

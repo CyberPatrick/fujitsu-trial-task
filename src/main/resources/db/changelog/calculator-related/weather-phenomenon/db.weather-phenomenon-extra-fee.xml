@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="0" author="Nikita">
+        <createTable tableName="weather_extra_fee">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_weather_extra_fee"/>
+            </column>
+            <column name="extra_fee" type="decimal(8, 2)"/>
+<!--            if in this weather phenomenon range courier can't work using specified transport types-->
+            <column name="is_forbidden" type="boolean" defaultValueBoolean="false"/>
+            <column name="timestamp" type="timestamp with timezone" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+<!--        <addUniqueConstraint tableName="weather_extra_fee" columnNames="timestamp"-->
+<!--                             constraintName="uk_weather_extra_fee__timestamp_weather_category"/>-->
+        <sql>
+            ALTER TABLE weather_extra_fee
+            ADD CONSTRAINT chk_weather_extra_fee__extra_fee_not_null_if_is_forbidden_false
+            CHECK (is_forbidden IS FALSE AND extra_fee IS NOT NULL OR is_forbidden IS TRUE)
+        </sql>
+
+        <insert tableName="weather_extra_fee">
+            <column name="id" value="0"/>
+            <column name="extra_fee" value="1"/>
+            <column name="is_forbidden" valueBoolean="false"/>
+        </insert>
+        <insert tableName="weather_extra_fee">
+            <column name="id" value="1"/>
+            <column name="extra_fee" value="0.5"/>
+            <column name="is_forbidden" valueBoolean="false"/>
+        </insert>
+<!--        TODO тут должен быть ещё thunder быть учтён, но его нет в ilmateenistus, указать это в readme-->
+        <insert tableName="weather_extra_fee">
+            <column name="id" value="2"/>
+            <column name="extra_fee" value="null"/>
+            <column name="is_forbidden" valueBoolean="true"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

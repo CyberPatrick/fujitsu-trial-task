@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <include file="calculator-related/db.transport.xml" relativeToChangelogFile="true"/>
+
+    <include file="db.weather-data.xml" relativeToChangelogFile="true"/>
+    <include file="calculator-related/db.cities-base-fee.xml" relativeToChangelogFile="true"/>
+    <include file="calculator-related/db.station-city-connection.xml" relativeToChangelogFile="true"/>
+
+
+    <include file="calculator-related/weather-phenomenon/db.weather-phenomenon-extra-fee.xml" relativeToChangelogFile="true"/>
+    <include file="calculator-related/weather-phenomenon/db.weather-phenomenon-categories.xml" relativeToChangelogFile="true"/>
+    <include file="calculator-related/weather-phenomenon/db.weather-phenomenon-extra-fee-transport.xml" relativeToChangelogFile="true"/>
+    <include file="calculator-related/weather-phenomenon/db.weather-phenomenon-extra-fee-categories.xml" relativeToChangelogFile="true"/>
+
+
+    <include file="calculator-related/air-temperature/db.air-temperature-extra-fee.xml" relativeToChangelogFile="true"/>
+    <include file="calculator-related/air-temperature/db.air-temperature-extra-fee-transport.xml" relativeToChangelogFile="true"/>
+
+    <include file="calculator-related/wind-speed/db.wind-speed-extra-fee.xml" relativeToChangelogFile="true"/>
+    <include file="calculator-related/wind-speed/db.wind-speed-extra-fee-transport.xml" relativeToChangelogFile="true"/>
+
+</databaseChangeLog>
