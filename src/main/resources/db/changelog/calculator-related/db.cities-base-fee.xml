@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="0" author="Nikita">
+        <createTable tableName="base_fee">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_base_fee"/>
+            </column>
+            <column name="city" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="regional_base_fee" type="decimal(8, 2)">
+                <constraints nullable="false"/>
+            </column>
+<!--            TODO в readme указать почему прямо тут указывается transport id, а во всех других таблицах есть отдельная таблица для связи-->
+            <column name="transport_id" type="int">
+                <constraints foreignKeyName="fk_base_fee__transport_id"
+                             referencedTableName="transport" referencedColumnNames="id" deleteCascade="true"/>
+            </column>
+            <column name="timestamp" type="timestamp with timezone" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addUniqueConstraint tableName="base_fee" columnNames="timestamp, transport_id, city"
+                             constraintName="uk_base_fee__timestamp_city_transport_id"/>
+
+        <insert tableName="base_fee">
+            <column name="id" value="0"/>
+            <column name="city" value="Tallinn"/>
+            <column name="regional_base_fee" value="4"/>
+            <column name="transport_id" value="2"/>
+        </insert>
+        <insert tableName="base_fee">
+            <column name="id" value="1"/>
+            <column name="city" value="Tallinn"/>
+            <column name="regional_base_fee" value="3.5"/>
+            <column name="transport_id" value="1"/>
+        </insert>
+        <insert tableName="base_fee">
+            <column name="id" value="2"/>
+            <column name="city" value="Tallinn"/>
+            <column name="regional_base_fee" value="3"/>
+            <column name="transport_id" value="0"/>
+        </insert>
+
+        <insert tableName="base_fee">
+            <column name="id" value="3"/>
+            <column name="city" value="Tartu"/>
+            <column name="regional_base_fee" value="3.5"/>
+            <column name="transport_id" value="2"/>
+        </insert>
+        <insert tableName="base_fee">
+            <column name="id" value="4"/>
+            <column name="city" value="Tartu"/>
+            <column name="regional_base_fee" value="3"/>
+            <column name="transport_id" value="1"/>
+        </insert>
+        <insert tableName="base_fee">
+            <column name="id" value="5"/>
+            <column name="city" value="Tartu"/>
+            <column name="regional_base_fee" value="2.5"/>
+            <column name="transport_id" value="0"/>
+        </insert>
+
+        <insert tableName="base_fee">
+            <column name="id" value="6"/>
+            <column name="city" value="Pärnu"/>
+            <column name="regional_base_fee" value="3"/>
+            <column name="transport_id" value="2"/>
+        </insert>
+        <insert tableName="base_fee">
+            <column name="id" value="7"/>
+            <column name="city" value="Pärnu"/>
+            <column name="regional_base_fee" value="2.5"/>
+            <column name="transport_id" value="1"/>
+        </insert>
+        <insert tableName="base_fee">
+            <column name="id" value="8"/>
+            <column name="city" value="Pärnu"/>
+            <column name="regional_base_fee" value="2"/>
+            <column name="transport_id" value="0"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

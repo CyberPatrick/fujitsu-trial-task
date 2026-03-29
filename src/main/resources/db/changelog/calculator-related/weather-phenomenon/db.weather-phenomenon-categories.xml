@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="0" author="Nikita">
+        <createTable tableName="weather_category">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_weather_category"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints unique="true" nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <insert tableName="weather_category">
+            <column name="id" value="0"/>
+            <column name="name" value="Clear"/>
+        </insert>
+        <insert tableName="weather_category">
+            <column name="id" value="1"/>
+            <column name="name" value="Few clouds"/>
+        </insert>
+        <insert tableName="weather_category">
+            <column name="id" value="2"/>
+            <column name="name" value="Variable clouds"/>
+        </insert>
+        <insert tableName="weather_category">
+            <column name="id" value="3"/>
+            <column name="name" value="Cloudy with clear spells"/>
+        </insert>
+        <insert tableName="weather_category">
+            <column name="id" value="4"/>
+            <column name="name" value="Overcast"/>
+        </insert>
+        <insert tableName="weather_category">
+            <column name="id" value="5"/>
+            <column name="name" value="Light snow shower"/>
+        </insert>
+        <insert tableName="weather_category">
+            <column name="id" value="6"/>
+            <column name="name" value="Moderate snow shower"/>
+        </insert>
+        <insert tableName="weather_category">
+            <column name="id" value="7"/>
+            <column name="name" value="Heavy snow shower"/>
+        </insert>
+        <insert tableName="weather_category">
+            <column name="id" value="8"/>
+            <column name="name" value="Light shower"/>
+        </insert>
+        <insert tableName="weather_category">
+            <column name="id" value="9"/>
+            <column name="name" value="Moderate shower"/>
+        </insert>
+        <insert tableName="weather_category">
+            <column name="id" value="10"/>
+            <column name="name" value="Heavy shower"/>
+        </insert>
+        <insert tableName="weather_category">
+            <column name="id" value="11"/>
+            <column name="name" value="Light rain"/>
+        </insert>
+        <insert tableName="weather_category">
+            <column name="id" value="12"/>
+            <column name="name" value="Moderate rain"/>
+        </insert>
+        <insert tableName="weather_category">
+            <column name="id" value="13"/>
+            <column name="name" value="Heavy rain"/>
+        </insert>
+        <insert tableName="weather_category">
+            <column name="id" value="14"/>
+            <column name="name" value="Glaze"/>
+        </insert>
+        <insert tableName="weather_category">
+            <column name="id" value="15"/>
+            <column name="name" value="Light sleet"/>
+        </insert>
+        <insert tableName="weather_category">
+            <column name="id" value="16"/>
+            <column name="name" value="Moderate sleet"/>
+        </insert>
+        <insert tableName="weather_category">
+            <column name="id" value="17"/>
+            <column name="name" value="Light snowfall"/>
+        </insert>
+        <insert tableName="weather_category">
+            <column name="id" value="18"/>
+            <column name="name" value="Moderate snowfall"/>
+        </insert>
+        <insert tableName="weather_category">
+            <column name="id" value="19"/>
+            <column name="name" value="Heavy snowfall"/>
+        </insert>
+        <insert tableName="weather_category">
+            <column name="id" value="20"/>
+            <column name="name" value="Hail"/>
+        </insert>
+        <insert tableName="weather_category">
+            <column name="id" value="21"/>
+            <column name="name" value="Mist"/>
+        </insert>
+        <insert tableName="weather_category">
+            <column name="id" value="22"/>
+            <column name="name" value="Fog"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

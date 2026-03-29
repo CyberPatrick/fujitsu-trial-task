@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="0" author="Nikita">
+        <createTable tableName="weather_data">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="pk_weather_data"/>
+            </column>
+            <column name="station_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="wmo_code" type="int"/>
+            <column name="air_temperature" type="decimal(4, 1)"/>
+            <column name="wind_speed" type="decimal(4, 1)"/>
+            <column name="weather_phenomenon" type="varchar(255)"/>
+            <column name="timestamp" type="timestamp with timezone">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addUniqueConstraint tableName="weather_data" columnNames="timestamp, station_name, wmo_code" constraintName="uk_weather_data__timestamp_station_name_wmo_code"/>
+    </changeSet>
+</databaseChangeLog>
