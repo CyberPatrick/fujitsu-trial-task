@@ -3,10 +3,8 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
-<!--    TODO explain purpose of this table-->
     <changeSet id="0" author="Nikita">
         <createTable tableName="station_city_connection">
-<!--            TODO could be done, using separate table with all possible station names and city names-->
             <column name="station_name" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>

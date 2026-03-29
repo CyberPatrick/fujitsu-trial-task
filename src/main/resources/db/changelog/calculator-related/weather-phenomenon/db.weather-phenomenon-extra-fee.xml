@@ -34,7 +34,6 @@
             <column name="extra_fee" value="0.5"/>
             <column name="is_forbidden" valueBoolean="false"/>
         </insert>
-<!--        TODO тут должен быть ещё thunder быть учтён, но его нет в ilmateenistus, указать это в readme-->
         <insert tableName="weather_extra_fee">
             <column name="id" value="2"/>
             <column name="extra_fee" value="null"/>

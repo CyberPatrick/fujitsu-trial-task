@@ -17,6 +17,14 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Supplier;
 
+/**
+ * Service responsible for calculating the delivery fee based on various factors such as
+ * weather conditions, transport type, and additional extra fees.
+ *
+ * This service fetches data from multiple repositories to determine the appropriate delivery fee.
+ * It also performs validation checks on the input data to ensure the calculation process
+ * is performed on valid city and transport types.
+ */
 @AllArgsConstructor
 @Service
 public class CalculateDeliveryFeeService {
@@ -30,6 +38,21 @@ public class CalculateDeliveryFeeService {
     private final StationCityConnectionRepository stationCityConnectionRepository;
     private final TransportRepository transportRepository;
 
+    /**
+     * Calculates the delivery fee based on the provided request details, including city,
+     * transport type, and an optional timestamp. The method considers various factors such
+     * as weather conditions and extra fees, and will throw exceptions if invalid data
+     * is provided or if no relevant data is found.
+     *
+     * @param request The delivery fee request containing the city name, transport type, and
+     *                an optional timestamp at which the fee calculation should occur.
+     * @return The calculated delivery fee as a floating-point value.
+     * @throws NoDataAtSpecifiedDate If no weather data is found for the specified timestamp.
+     * @throws InternalServerException If weather data is unavailable and no timestamp is specified.
+     * @throws VehicleTypeIsForbiddenException If the specified vehicle type is forbidden.
+     * @throws InvalidCityException If the specified city is invalid or not recognized.
+     * @throws InvalidTransportException If the specified transport type is invalid or not recognized.
+     */
     public Float calculateDeliveryFee(DeliveryFeeRequest request) {
         validateRequestData(request);
 

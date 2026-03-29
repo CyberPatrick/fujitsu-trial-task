@@ -15,7 +15,6 @@
             <column name="regional_base_fee" type="decimal(8, 2)">
                 <constraints nullable="false"/>
             </column>
-<!--            TODO в readme указать почему прямо тут указывается transport id, а во всех других таблицах есть отдельная таблица для связи-->
             <column name="transport_id" type="int">
                 <constraints foreignKeyName="fk_base_fee__transport_id"
                              referencedTableName="transport" referencedColumnNames="id" deleteCascade="true"/>

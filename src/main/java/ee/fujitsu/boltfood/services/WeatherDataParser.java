@@ -11,6 +11,13 @@ import java.util.List;
 public class WeatherDataParser {
     private final XmlMapper xmlMapper = new XmlMapper();
 
+    /**
+     * Parses the provided XML string containing weather data into an {@link ObservationsApiResponse} object.
+     *
+     * @param weatherDataXml the XML string representing weather data
+     * @return an {@link ObservationsApiResponse} object containing the parsed weather data
+     * @throws RuntimeException if the XML cannot be parsed into an {@link ObservationsApiResponse}
+     */
     public ObservationsApiResponse parse(String weatherDataXml) {
         try {
             return xmlMapper.readValue(weatherDataXml, ObservationsApiResponse.class);
